@@ -39,9 +39,6 @@ td.nw{white-space:nowrap;font-size:11.5px;color:var(--sub)}
 .warn{border-left:3px solid var(--risk);background:rgba(179,38,30,.07);padding:13px 15px;border-radius:0 6px 6px 0;font-size:12.5px}
 .warn b{color:var(--risk)}
 .foot{color:var(--sub);font-size:11.5px;margin-top:22px;line-height:1.7}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:900px){.grid2{grid-template-columns:1fr}}
-.tl td:first-child{white-space:nowrap;color:var(--sub);font-variant-numeric:tabular-nums}
 .scroll{max-height:640px;overflow:auto;border:1px solid var(--line);border-radius:8px}
 .listwrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
 .req{min-width:260px;font-size:11.5px} .why{min-width:220px;font-size:11.5px;color:var(--sub)}
@@ -143,7 +140,6 @@ tr.det>td{padding:0;background:var(--bg)}
 <p class="hint" style="margin:12px 0 0">★ 표시 = 우선 조치 대상(Must × 미확정) 11건</p>
 </div>
 
-<div class="grid2">
 <div class="card">
 <h2>위키 데이터 정합성 이슈</h2>
 <table><thead><tr><th>구분</th><th class="num">건수</th><th>조치</th></tr></thead><tbody>
@@ -155,17 +151,6 @@ tr.det>td{padding:0;background:var(--bg)}
 <tr><td>상태–수용여부 불일치 (No.10)</td><td class="num">1</td><td>'완료'인데 수용여부 '미정'</td></tr>
 <tr><td>화면ID 컬럼 부재</td><td class="num">38</td><td>프로그램목록 base화면ID 매핑 별도 필요</td></tr>
 </tbody></table>
-</div>
-
-<div class="card">
-<h2>실행 타임라인</h2>
-<table class="tl"><thead><tr><th>시각</th><th>액션</th><th>담당</th></tr></thead><tbody>
-<tr><td>8/18 완료</td><td>위키 991.1 전건 38건 전사 → 6종 재분류 → 관리대장 v2.0</td><td>이모션 PM</td></tr>
-<tr><td>8/18 저녁</td><td>3축 질의서(24건) 개발팀 발송 · 디자인 언급 11건 케이스 확정</td><td>이모션 PM</td></tr>
-<tr><td>8/19 09:00</td><td>개발 3축 회신 수취 → 대장 v2.1 · <b>PMO Teams 회신 · 스크럼 공유</b></td><td>이모션 PM</td></tr>
-<tr><td>8/20(목)</td><td>기 합의 답변 기한 — 범위·공수 최종 회신 / PMO 고객 협의 5건</td><td>PM · PMO</td></tr>
-</tbody></table>
-</div>
 </div>
 
 <div class="card">
