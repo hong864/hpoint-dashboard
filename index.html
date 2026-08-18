@@ -55,6 +55,11 @@
   .auto-card .auto-meta { font-size: 11px; color: #9A9892; }
   .links { margin-top: 24px; font-size: 12px; color: #6B6B68; text-align: center; }
   .links a { color: #1D4ED8; text-decoration: none; }
+  .section-toggle {
+    border: 1px solid #E8E6E1; background: #fff; border-radius: 6px;
+    padding: 3px 10px; font-size: 11px; font-weight: 500; cursor: pointer; color: #4B4B48;
+  }
+  .section-toggle:hover { background: #F7F7F5; }
 </style>
 </head>
 <body>
@@ -88,8 +93,11 @@
   </div>
 
   <section>
-    <h2>자동화 기능 <span class="count">4개</span></h2>
-    <div class="auto-grid">
+    <h2>
+      <span>자동화 기능 <span class="count">4개</span></span>
+      <button class="section-toggle" id="autoToggleBtn" aria-expanded="false">보이기</button>
+    </h2>
+    <div class="auto-grid" id="automations" style="display:none;">
       <div class="auto-card">
         <div class="auto-title">본부장님 보고 DB 갱신</div>
         <div class="auto-desc">마일스톤·화면설계 진척·이슈현황을 원본 Notion 데이터로 다시 취합합니다.</div>
@@ -180,5 +188,18 @@
     에서 확인하세요.
   </div>
 </div>
+<script>
+  (function () {
+    var btn = document.getElementById('autoToggleBtn');
+    var body = document.getElementById('automations');
+    if (!btn || !body) return;
+    btn.addEventListener('click', function () {
+      var willShow = body.style.display === 'none';
+      body.style.display = willShow ? '' : 'none';
+      btn.textContent = willShow ? '숨기기' : '보이기';
+      btn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+    });
+  })();
+</script>
 </body>
 </html>
