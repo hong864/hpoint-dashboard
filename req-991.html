@@ -176,31 +176,6 @@ tr.det>td{padding:0;background:var(--bg)}
 </div>
 
 <div class="card">
-<h2>RACI 오너십 명확도 <span class="n">평균 55.4점 / 100</span></h2>
-<p class="hint">이 점수는 요건의 난이도가 아니라 <b>위키에 오너십과 결정이 기록되어 있는가</b>를 5개 축으로 잰 값입니다. 낮다는 건 일을 안 했다는 뜻이 아니라, 누가 승인했고 언제 끝나는지가 문서에 없다는 뜻입니다.</p>
-<div class="grid2">
-<div>
-<table><thead><tr><th>채점 축</th><th class="num">배점</th><th>판정 기준</th><th class="num">전건 획득률</th></tr></thead>
-<tbody><tr><td>① 요청자(C/I) 식별</td><td class="num">20</td><td>요청자 컬럼 기재 여부 — 누구의 요건인지 확인 가능한가</td><td class="num"><b style="color:var(--done)">97%</b></td></tr><tr><td>② 수행자(R) 지정</td><td class="num">15</td><td>작업자 컬럼 기재 여부 — 실제로 손댈 사람이 지정됐는가</td><td class="num"><b style="color:var(--done)">100%</b></td></tr><tr><td>③ 승인자(A) 결정 기록</td><td class="num">25</td><td>수용여부 기재 — 수용 25 / 미정 10 / 공란 0</td><td class="num"><b style="color:var(--risk)">32%</b></td></tr><tr><td>④ 협의 경로(C) 명시</td><td class="num">20</td><td>대응방안에 협의 대상·판단 근거가 서술 20 / 파트명만 10 / 공란 0</td><td class="num"><b style="color:var(--risk)">49%</b></td></tr><tr><td>⑤ 완료 기준 확정</td><td class="num">20</td><td>반영일자 기재 여부 — 언제 끝났다/끝난다가 있는가</td><td class="num"><b style="color:var(--risk)">16%</b></td></tr></tbody></table>
-<p class="hint" style="margin-top:10px"><b>③ 승인 기록 32% · ⑤ 완료 기준 16%.</b> "누가 할지"는 100% 적혀 있는데 "승인했는지 / 언제 끝나는지"가 비어 있습니다. A(Accountable)와 완료 판정이 무너진 구조입니다.</p>
-</div>
-<div>
-<table><thead><tr><th>구분</th><th class="num">건수</th><th>의미</th></tr></thead><tbody>
-<tr><td><span class="bd bd-명확">명확</span> 80점 이상</td><td class="num">11</td><td>승인·완료 기준까지 기록됨</td></tr>
-<tr><td><span class="bd bd-보통">보통</span> 50~79점</td><td class="num">6</td><td>일부 축 결손</td></tr>
-<tr><td><span class="bd bd-취약">취약</span> 50점 미만</td><td class="num">21</td><td><b>오너십 공백 — 전체의 55%</b></td></tr>
-</tbody></table>
-<table style="margin-top:16px"><thead><tr><th>A(최종책임) 파트</th><th class="num">건수</th><th>의미</th></tr></thead><tbody>
-<tr><td>개발(IT)</td><td class="num">18</td><td>이모션이 단독으로 결론 낼 수 없는 건</td></tr>
-<tr><td>기획(이모션)</td><td class="num">12</td><td>자체 종결 가능</td></tr>
-<tr><td>PMO(수행사)</td><td class="num">8</td><td>범위·일정 승인 또는 고객 협의</td></tr>
-</tbody></table>
-<p class="hint" style="margin-top:10px">R(수행)은 <b>38건 전건이 기획</b>입니다. 결정권은 개발·PMO에 있고 실행 부하는 전부 기획에 몰려 있는 구조 — R&R 혼선의 구조적 원인입니다.</p>
-</div>
-</div>
-</div>
-
-<div class="card">
 <h2>★ 우선 조치 대상 <span class="n">Must × 오너십 취약 9건</span></h2>
 <p class="hint">오픈 필수(Must)인데 승인 기록·완료 기준이 비어 있는 조합. 일정이 밀렸을 때 "누가 언제 결정했는지"를 댈 수 없습니다.</p>
 <table><thead><tr><th>순위</th><th>No</th><th>항목</th><th>재분류 상태</th><th class="num">Score</th><th>A(최종책임)</th><th>결손 축</th><th>즉시 조치</th></tr></thead>
