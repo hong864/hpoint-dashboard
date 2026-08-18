@@ -95,7 +95,7 @@ tr.det>td{padding:0;background:var(--bg)}
 
 <header>
 <h1><span class="badge">H.Point</span>위키 991.1 「추가 및 변경 요건 관리」 — 상태 재분류 현황</h1>
-<div class="meta">전건 38건 (2026.7.16 ~ 8.18 접수) · 기준일 2026-08-18(화) · 이모션 글로벌</div>
+<div class="meta">전체 요건 38건 (2026.7.16 ~ 8.18 접수) · 기준일 2026-08-18(화) · 이모션 글로벌</div>
 </header>
 
 <div class="card">
@@ -110,13 +110,10 @@ tr.det>td{padding:0;background:var(--bg)}
 </div>
 
 <div class="card">
-<h2>MoSCoW 우선순위 <span class="n">판정 기준: 오픈 필수성</span></h2>
-<p class="hint">현 차수(1.0 오픈) 반영 필요성 기준. 개발 3축 회신 결과에 따라 Should↔Could, Could↔Won't 재조정.</p>
+<h2>MoSCoW 우선순위</h2>
 <div class="tiles"><div class="tile" style="--c:var(--risk)"><div class="lbl">Must</div><div class="val">14</div><div class="pct">36.8% · 미반영 시 오픈 불가 — 법적 고지·약관·결제·…</div></div><div class="tile" style="--c:var(--dev)"><div class="lbl">Should</div><div class="val">13</div><div class="pct">34.2% · 오픈은 가능하나 운영·정책·정합성상 중요 — 없…</div></div><div class="tile" style="--c:var(--prog)"><div class="lbl">Could</div><div class="val">8</div><div class="pct">21.1% · 사용성·심미 개선. 미반영해도 오픈과 운영에 지…</div></div><div class="tile" style="--c:var(--later)"><div class="lbl">Won't</div><div class="val">3</div><div class="pct">7.9% · 현 차수 오픈 범위 외 — 신규 공수가 크거나 …</div></div></div>
 <table style="margin-top:18px"><thead><tr><th>MoSCoW</th><th class="num">완료</th><th class="num">진행 중</th><th class="num">개발 검토</th><th class="num">고객 협의</th><th class="num">추후 반영</th><th class="num">범위·일정</th><th class="num">합계</th></tr></thead>
 <tbody><tr style="--c:var(--risk)"><td><span class="dot"></span>Must</td><td class="num">1</td><td class="num">2</td><td class="num">8</td><td class="num">1</td><td class="num"></td><td class="num">2</td><td class="num"><b>14</b></td></tr><tr style="--c:var(--dev)"><td><span class="dot"></span>Should</td><td class="num"></td><td class="num">3</td><td class="num">7</td><td class="num">1</td><td class="num"></td><td class="num">2</td><td class="num"><b>13</b></td></tr><tr style="--c:var(--prog)"><td><span class="dot"></span>Could</td><td class="num">1</td><td class="num">5</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"><b>8</b></td></tr><tr style="--c:var(--later)"><td><span class="dot"></span>Won't</td><td class="num"></td><td class="num"></td><td class="num">1</td><td class="num"></td><td class="num"></td><td class="num">2</td><td class="num"><b>3</b></td></tr></tbody></table>
-<div class="warn" style="margin-top:14px"><b>Must 14건 중 8건이 '개발 검토 필요'</b> — 오픈 필수 요건인데 개발 회신 없이는 확정할 수 없다는 뜻입니다. 3축 질의 회신에서 최우선으로 받아야 할 묶음입니다 (No.3·7·18·24·25·30·33·37).<br>
-<span style="color:var(--sub)">Won't 3건(No.12 동영상광고 / No.21 폴더블 / No.36 외부연동쿠폰)은 개발 B축이 '반영 불가'로 회신되면 그대로 '추후 반영 검토'로 이동합니다 — 현재 0건인 그 칸을 채울 1순위 후보.</span></div>
 </div>
 
 <div class="card">
@@ -124,11 +121,10 @@ tr.det>td{padding:0;background:var(--bg)}
 <p class="hint">오픈 필수(Must)인데 아직 '완료'·'진행 중'으로 확정되지 않은 건. 접수 후 경과일이 긴 순으로 정렬했습니다.</p>
 <table><thead><tr><th>순위</th><th class="num">No</th><th>항목</th><th>재분류 상태</th><th>접수일</th><th class="num">경과</th><th>후속 오너</th><th>즉시 조치</th><th>기한</th></tr></thead>
 <tbody><tr><td class="num">1</td><td class="num">3</td><td>포인트충전(자동충전) - 자동충전 시 핀번호등록 필수로 변경</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-07-16</td><td class="num" style="color:var(--risk)"><b>D+33</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">개발 협의 결론 확정 — 핀번호등록 필수화 적용 여부</td><td class="nw">8/19</td></tr><tr><td class="num">2</td><td class="num">7</td><td>공통 - 메인팝업</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-07-27</td><td class="num" style="color:var(--risk)"><b>D+22</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">개발 회신 + 팝업 노출 정책 확정</td><td class="nw">8/19</td></tr><tr><td class="num">3</td><td class="num">13</td><td>메인</td><td class="nw"><span class="tag" style="--c:var(--risk)">범위 및 일정 영향 검토 필요</span></td><td class="nw">2026-07-28</td><td class="num" style="color:var(--risk)"><b>D+21</b></td><td class="nw">PM + 개발 PL</td><td style="font-size:11.5px">메인 모듈 재정의 범위 + 로그인 후 팝업 순서 확정</td><td class="nw">8/20</td></tr><tr><td class="num">4</td><td class="num">18</td><td>모바일상품권 선물하기</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-07-30</td><td class="num" style="color:var(--risk)"><b>D+19</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">API 응답 스펙 확정(개발)</td><td class="nw">8/19</td></tr><tr><td class="num">5</td><td class="num">17</td><td>가입절차간소화</td><td class="nw"><span class="tag" style="--c:var(--cust)">고객 협의 필요</span></td><td class="nw">2026-07-31</td><td class="num" style="color:var(--risk)"><b>D+18</b></td><td class="nw">PMO → 현업</td><td style="font-size:11.5px">PMO 경유 제휴사 가이드·법무 확인</td><td class="nw">8/20</td></tr><tr><td class="num">6</td><td class="num">24</td><td>광고성 정보 수신 동의</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-08-04</td><td class="num" style="color:var(--risk)"><b>D+14</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">원 요청자 확인 + 노출 케이스 확정</td><td class="nw">8/19</td></tr><tr><td class="num">7</td><td class="num">25</td><td>간편인증 오류 시 프로세스</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-08-04</td><td class="num" style="color:var(--risk)"><b>D+14</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">실제 5회 오류 정책 개발 확인</td><td class="nw">8/19</td></tr><tr><td class="num">8</td><td class="num">30</td><td>가입절차간소화</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-08-06</td><td class="num" style="color:var(--risk)"><b>D+12</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">본인인증 적용 범위 개발 확인</td><td class="nw">8/19</td></tr><tr><td class="num">9</td><td class="num">32</td><td>설정</td><td class="nw"><span class="tag" style="--c:var(--risk)">범위 및 일정 영향 검토 필요</span></td><td class="nw">2026-08-07</td><td class="num" style="color:var(--risk)"><b>D+11</b></td><td class="nw">PM + 개발 PL</td><td style="font-size:11.5px">약관 구조 공수 산정 → 변경관리</td><td class="nw">8/20</td></tr><tr><td class="num">10</td><td class="num">33</td><td>가입절차간소화</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-08-12</td><td class="num" style="color:var(--risk)"><b>D+6</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">네이티브 최종 정책 확정 → 기획 반영</td><td class="nw">8/19</td></tr><tr><td class="num">11</td><td class="num">37</td><td>적립/결제(월렛)</td><td class="nw"><span class="tag" style="--c:var(--dev)">개발 검토 필요</span></td><td class="nw">2026-08-14</td><td class="num" style="color:var(--risk)"><b>D+4</b></td><td class="nw">개발 PL</td><td style="font-size:11.5px">결제 인증 분기 개발 영향 확인</td><td class="nw">8/19</td></tr></tbody></table>
-<div class="warn" style="margin-top:14px"><b>법적 성격 건이 전부 이 구간에 있습니다</b> — No.7 신용정보 마케팅 팝업 · No.24 광고성 정보 수신 동의 · No.32 약관 구조 · No.17 제휴사 CI.<br>11건 중 8건이 '개발 검토 필요'라 8/19 3축 회신 한 번으로 대부분 확정됩니다. 최장기 미결은 <b>No.3 (7/16 접수, D+33)</b>입니다.</div>
 </div>
 
 <div class="card">
-<h2>전건 목록 <span class="n">MoSCoW 분류별 탭 · 행을 누르면 상세가 펼쳐집니다</span></h2>
+<h2>전체 요건 목록 <span class="n">MoSCoW 분류별 탭 · 행을 누르면 상세가 펼쳐집니다</span></h2>
 <div class="tabs" id="tabs"><button class="tab" data-t="all" aria-selected="true">전체 <b>38</b></button><button class="tab" data-t="Must" aria-selected="false" style="--c:var(--risk)"><span class="tdot"></span>Must <b>14</b></button><button class="tab" data-t="Should" aria-selected="false" style="--c:var(--dev)"><span class="tdot"></span>Should <b>13</b></button><button class="tab" data-t="Could" aria-selected="false" style="--c:var(--prog)"><span class="tdot"></span>Could <b>8</b></button><button class="tab" data-t="Won&#x27;t" aria-selected="false" style="--c:var(--later)"><span class="tdot"></span>Won't <b>3</b></button></div>
 <div class="tnote" data-t="Must" hidden><b>Must</b> · 미반영 시 오픈 불가 — 법적 고지·약관·결제·인증·보안, 또는 미확정 시 개발 착수 불가한 스펙<br><span style="color:var(--sub)">운영 원칙 — 현 차수 필수 반영. 일정 영향이 나와도 흡수 방안을 먼저 찾는다</span></div><div class="tnote" data-t="Should" hidden><b>Should</b> · 오픈은 가능하나 운영·정책·정합성상 중요 — 없으면 CS/운영 부담 또는 산출물 불일치 발생<br><span style="color:var(--sub)">운영 원칙 — 현 차수 반영 목표. 공수 초과 시 Could로 하향 검토</span></div><div class="tnote" data-t="Could" hidden><b>Could</b> · 사용성·심미 개선. 미반영해도 오픈과 운영에 지장 없음<br><span style="color:var(--sub)">운영 원칙 — 여력 범위 내 반영. 일정 압박 시 가장 먼저 후순위로</span></div><div class="tnote" data-t="Won&#x27;t" hidden><b>Won't</b> · 현 차수 오픈 범위 외 — 신규 공수가 크거나 기 개발분 재작업을 유발<br><span style="color:var(--sub)">운영 원칙 — 2차 백로그 이관 후보. 고객 협의로 확정</span></div>
 <div class="tbar"><span id="cntlbl">전체 38건</span>
@@ -149,8 +145,7 @@ tr.det>td{padding:0;background:var(--bg)}
 </div>
 
 <div class="foot">
-연동 산출물 · <b>H.Point_991.1_요건분류관리대장_v3.1_20260818.xlsx</b> (00.가이드 / 01.요건분류대장 / 02.개발협의요청 / 03.상태별집계 / 04.고객협의리스트 / 05.협의완료_설계서개정 / 06.MoSCoW우선순위 / 07.우선조치 / 08.변경이력)<br>
-출처 · Confluence 「991.1 추가 및 변경 요건관리」 pageId=250372500 · 전건 캡처 기준 전사
+출처 · Confluence 「991.1 추가 및 변경 요건관리」 pageId=250372500 · 전체 요건 캡처 기준 전사
 </div>
 
 </div>
