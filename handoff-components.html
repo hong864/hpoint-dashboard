@@ -98,10 +98,7 @@ td.mono,th.mono{font-family:var(--mono);font-size:12px}
 .note>b:first-child,.warn>b:first-child,.stop>b:first-child,.ok>b:first-child{display:block;margin-bottom:2px;font-size:12.5px}
 
 /* ── Role visibility ── */
-.role-des,.role-pub,.role-dev{}
-body[data-role="des"] .role-pub,body[data-role="des"] .role-dev{display:none}
-body[data-role="pub"] .role-des,body[data-role="pub"] .role-dev{display:none}
-body[data-role="dev"] .role-des,body[data-role="dev"] .role-pub{display:none}
+
 
 /* ── Spec grid ── */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -247,6 +244,23 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
 /* ── 데모 목업 내 비활성 링크 ── */
 .demos a[aria-disabled="true"],.demo a[aria-disabled="true"]{cursor:default;pointer-events:none}
 [data-jump]{cursor:pointer}
+/* ── 항목별 대상 직군 표시 ── */
+.aud{display:inline-flex;gap:3px;margin-left:auto;flex:0 0 auto}
+.aud i{font-style:normal;font-size:10px;font-weight:700;width:19px;height:17px;border-radius:4px;
+  display:grid;place-items:center;background:#EDF0F5;color:#B7BDC7;letter-spacing:0;line-height:1}
+.aud i.on{color:#fff}
+.aud i.d.on{background:#6B21A8}
+.aud i.p.on{background:#9D174D}
+.aud i.e.on{background:#0B6741}
+/* ── 역할 필터: 대상이 아닌 블록 숨김 ── */
+body[data-role="des"] .hpblk:not(.for-des),
+body[data-role="pub"] .hpblk:not(.for-pub),
+body[data-role="dev"] .hpblk:not(.for-dev){display:none}
+body[data-role="des"] .aud i.d,body[data-role="pub"] .aud i.p,body[data-role="dev"] .aud i.e{outline:2px solid rgba(255,255,255,.5);outline-offset:-3px}
+.bar .cnt{font-size:11.5px;color:var(--hp-ink-500);font-variant-numeric:tabular-nums}
+.bar .cnt b{color:var(--hp-ink-900)}
+.secmuted{opacity:.35}
+@media print{.aud{display:none}}
 [data-jump]:focus-visible{outline:2px solid var(--hp-primary-600);outline-offset:2px;border-radius:3px}
 /* ── 맨 위로 ── */
 .totop{position:fixed;right:22px;bottom:22px;z-index:900;width:44px;height:44px;border-radius:var(--r-full);
@@ -296,7 +310,8 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
   <button class="rbtn" data-r="pub" aria-pressed="false">퍼블리셔</button>
   <button class="rbtn" data-r="dev" aria-pressed="false">개발자</button>
   <span class="sp"></span>
-  <span class="hint">역할을 선택하면 해당 직군 전용 블록만 남습니다 · 공통 스펙은 항상 표시</span>
+  <span class="cnt" id="roleCount"></span>
+  <span class="hint">항목마다 <b>디·퍼·개</b> 표시로 대상 직군을 명시합니다</span>
 </div>
 
 <section id="intro">
@@ -331,6 +346,17 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
       공통 컴포넌트는 화면이 아니므로 화면ID를 채번하지 않고, 별도 <b>컴포넌트ID(HPC-XX)</b>를 부여해 화면설계서에서 참조합니다.</div>
     </div>
   </div>
+
+  <div class="note"><b>대상 직군 표시 — 항목마다 「디 · 퍼 · 개」</b>
+  모든 소항목 우측에 대상 직군이 표시됩니다. 진하게 켜진 글자가 해당 직군입니다.
+  <span style="display:inline-flex;gap:3px;vertical-align:-4px;margin:0 4px">
+    <i style="font-style:normal;font-size:10px;font-weight:700;width:19px;height:17px;border-radius:4px;display:grid;place-items:center;background:#6B21A8;color:#fff">디</i>
+    <i style="font-style:normal;font-size:10px;font-weight:700;width:19px;height:17px;border-radius:4px;display:grid;place-items:center;background:#EDF0F5;color:#B7BDC7">퍼</i>
+    <i style="font-style:normal;font-size:10px;font-weight:700;width:19px;height:17px;border-radius:4px;display:grid;place-items:center;background:#EDF0F5;color:#B7BDC7">개</i>
+  </span>
+  = 디자이너 전용 항목. 상단 「보기」에서 직군을 고르면 <b>해당 직군이 대상인 항목만</b> 남고, 상단에 표시 개수가 나옵니다
+  (전체 73 · 디자이너 44 · 퍼블리셔 62 · 개발자 53).
+  컴포넌트별 <b>베리에이션 판정 기준과 법정 요건은 전 직군 공통</b>이라 어느 뷰에서도 사라지지 않습니다.</div>
 
   <h3>적용 채널 · 컴포넌트 매트릭스</h3>
   <div class="tw"><table class="matrix">
@@ -2139,20 +2165,89 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
       document.querySelectorAll('.rbtn').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
       btn.setAttribute('aria-pressed','true');
       body.setAttribute('data-role', btn.dataset.r);
+      renderCount();
+      update();
     });
   });
 
-  var MAP = { '디자이너':'role-des', '퍼블리셔':'role-pub', '개발':'role-dev' };
-  document.querySelectorAll('h3').forEach(function(h){
-    var badges = h.querySelectorAll('.b-des, .b-pub, .b-dev');
-    if(!badges.length) return;
-    var cls = [];
-    badges.forEach(function(b){ var c = MAP[b.textContent.trim()]; if(c && cls.indexOf(c)<0) cls.push(c); });
-    if(cls.length !== 1) return;                 /* 복수 직군이면 공통 취급 */
-    var node = h, group = [h];
-    while((node = node.nextElementSibling) && node.tagName !== 'H3' && node.tagName !== 'H2'){ group.push(node); }
-    group.forEach(function(el){ el.classList.add(cls[0]); });
-  });
+  /* ── 항목별 대상 직군 (D=디자이너 P=퍼블리셔 E=개발자) ─────────────────
+     모든 h3 소항목에 대상 직군을 명시한다. 여기 없는 항목은 공통(DPE)으로 처리.
+     h2 직후 도입부(리드·매트릭스)는 항상 표시된다. */
+  var AUDIENCE = {
+    /* 개요 */
+    'intro-1':'DPE', 'intro-2':'DPE',
+    /* 디자인 토큰 */
+    'tokens-1':'DP', 'tokens-2':'DP', 'tokens-3':'DP', 'tokens-4':'DP', 'tokens-5':'DP',
+    'tokens-6':'PE', 'tokens-7':'DPE', 'tokens-8':'DE',
+    /* Header */
+    'hdr-1':'DPE', 'hdr-2':'DP', 'hdr-3':'DP', 'hdr-4':'DP', 'hdr-5':'PE', 'hdr-6':'DPE', 'hdr-7':'E',
+    /* Banner */
+    'bnr-1':'DPE', 'bnr-2':'DPE', 'bnr-3':'PE', 'bnr-4':'D', 'bnr-5':'DP', 'bnr-6':'PE', 'bnr-7':'E',
+    /* Pop-up */
+    'pop-1':'DPE', 'pop-2':'E', 'pop-3':'DPE', 'pop-4':'DP', 'pop-5':'PE', 'pop-6':'PE',
+    /* Breadcrumb */
+    'brd-1':'DPE', 'brd-2':'DP', 'brd-3':'PE', 'brd-4':'E', 'brd-5':'PE',
+    /* 댓글 */
+    'cmt-1':'DPE', 'cmt-2':'DP', 'cmt-3':'DP', 'cmt-4':'E', 'cmt-5':'PE', 'cmt-6':'PE',
+    /* BNB */
+    'bnb-1':'DPE', 'bnb-2':'DPE', 'bnb-3':'DPE', 'bnb-4':'PE', 'bnb-5':'PE', 'bnb-6':'PE',
+    /* 광고 */
+    'adv-1':'DPE', 'adv-2':'DPE', 'adv-3':'E', 'adv-4':'E', 'adv-5':'PE',
+    /* Tab menu */
+    'tab-1':'DPE', 'tab-2':'DP', 'tab-3':'PE', 'tab-4':'PE', 'tab-5':'PE',
+    /* 그 외 UI */
+    'hpc-09-tst':'DPE', 'hpc-09-mdl':'DPE', 'hpc-09-dtp':'DPE', 'hpc-09-sta':'DP',
+    'hpc-09-btn':'DP', 'hpc-09-frm':'DPE', 'hpc-09-bdg':'DP', 'hpc-09-scr':'PE',
+    /* 부록 */
+    'webview-1':'DPE', 'webview-2':'PE', 'webview-3':'PE',
+    'qa-1':'D', 'qa-2':'P', 'qa-3':'E', 'qa-4':'DPE',
+    'open-1':'DPE'
+  };
+  var ROLEKEY = { D:'des', P:'pub', E:'dev' };
+  var ROLENAME = { D:'디자이너', P:'퍼블리셔', E:'개발자' };
+  var stat = { total:0, des:0, pub:0, dev:0, missing:[] };
+
+  function applyAudience(){
+    document.querySelectorAll('section h3').forEach(function(h){
+      var code = AUDIENCE[h.id];
+      if(!code){ code = 'DPE'; stat.missing.push(h.id); }
+      stat.total++;
+      var classes = ['hpblk'];
+      ['D','P','E'].forEach(function(k){
+        if(code.indexOf(k) >= 0){ classes.push('for-' + ROLEKEY[k]); stat[ROLEKEY[k]]++; }
+      });
+
+      /* h3 본인 + 다음 h3/h2 전까지의 형제 블록을 한 묶음으로 */
+      var node = h, group = [h];
+      while((node = node.nextElementSibling) && node.tagName !== 'H3' && node.tagName !== 'H2'){ group.push(node); }
+      group.forEach(function(el){ classes.forEach(function(c){ el.classList.add(c); }); });
+
+      /* h3 안의 수동 직군 뱃지는 제거하고 표준 표시로 대체 (이중 표기 방지) */
+      h.querySelectorAll('.b-des, .b-pub, .b-dev').forEach(function(b){ b.remove(); });
+
+      var aud = document.createElement('span');
+      aud.className = 'aud';
+      aud.setAttribute('aria-label', '대상: ' + ['D','P','E'].filter(function(k){ return code.indexOf(k)>=0; })
+        .map(function(k){ return ROLENAME[k]; }).join(', '));
+      var CHAR = { D:'디', P:'퍼', E:'개' };
+      aud.innerHTML = ['D','P','E'].map(function(k){
+        var on = code.indexOf(k) >= 0;
+        return '<i class="' + k.toLowerCase() + (on ? ' on' : '') + '" title="' +
+               ROLENAME[k] + (on ? ' 대상' : ' 해당 없음') + '">' + CHAR[k] + '</i>';
+      }).join('');
+      h.appendChild(aud);
+    });
+  }
+
+  function renderCount(){
+    var el = document.getElementById('roleCount');
+    if(!el) return;
+    var r = document.body.getAttribute('data-role');
+    if(r === 'all'){ el.innerHTML = '전 항목 <b>' + stat.total + '</b>개'; return; }
+    var n = stat[r] || 0;
+    var label = { des:'디자이너', pub:'퍼블리셔', dev:'개발자' }[r] || '';
+    el.innerHTML = label + ' 대상 <b>' + n + '</b> / ' + stat.total + '개 항목';
+  }
 
   /* ─────────────── 2. h3 소제목에 앵커 ID + 퍼머링크 부여 ─────────────── */
   document.querySelectorAll('section').forEach(function(sec){
@@ -2183,6 +2278,9 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
       h.appendChild(a);
     });
   });
+
+  /* h3 ID가 모두 부여된 뒤에 대상 직군을 적용한다 (순서 의존) */
+  applyAudience();
 
   var toast = document.querySelector('.copied');
   var tid;
@@ -2371,6 +2469,10 @@ h3:target,section:target>h2.sec{animation:flash 1.6s ease-out}
     setTimeout(function(){ goTo(location.hash.slice(1)); }, 60);
   }
 
+  renderCount();
+  if(stat.missing.length) console.warn('[H.Point 핸드오프] 대상 직군 미지정 항목:', stat.missing.join(', '));
+  console.log('[H.Point 핸드오프] 대상 직군 — 전체 ' + stat.total + ' / 디자이너 ' + stat.des +
+              ' / 퍼블리셔 ' + stat.pub + ' / 개발자 ' + stat.dev);
   console.log('[H.Point 핸드오프] 상호참조 ' + linked + '건 · h3 앵커 ' +
               document.querySelectorAll('h3[id]').length + '개 · 이동 링크 ' +
               document.querySelectorAll('[data-jump]').length + '개 · 잔여 href앵커 ' +
